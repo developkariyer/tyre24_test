@@ -2,6 +2,7 @@
 
 namespace App\Tests\Controller;
 
+use App\Service\ProductPipeline;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class DefaultControllerTest extends WebTestCase
@@ -32,7 +33,7 @@ class DefaultControllerTest extends WebTestCase
         $client = static::createClient();
 
         // Create a mock ProductPipeline to simulate no products
-        $mockPipeline = $this->getMockBuilder(\App\Service\ProductPipeline::class)
+        $mockPipeline = $this->getMockBuilder(ProductPipeline::class)
             ->disableOriginalConstructor()
             ->onlyMethods(['process'])
             ->getMock();
@@ -40,9 +41,9 @@ class DefaultControllerTest extends WebTestCase
         $mockPipeline->method('process')->willReturn([]);
 
         // Replace the service in the container
-        static::getContainer()->set(\App\Service\ProductPipeline::class, $mockPipeline);
+        static::getContainer()->set(ProductPipeline::class, $mockPipeline);
 
-        $crawler = $client->request('GET', '/');
+        $client->request('GET', '/');
 
         // Ensure the response is successful
         $this->assertResponseIsSuccessful();
@@ -57,7 +58,7 @@ class DefaultControllerTest extends WebTestCase
         $client = static::createClient();
 
         // Create a mock ProductPipeline to simulate specific products
-        $mockPipeline = $this->getMockBuilder(\App\Service\ProductPipeline::class)
+        $mockPipeline = $this->getMockBuilder(ProductPipeline::class)
             ->disableOriginalConstructor()
             ->onlyMethods(['process'])
             ->getMock();
@@ -78,7 +79,7 @@ class DefaultControllerTest extends WebTestCase
         ]);
 
         // Replace the service in the container
-        static::getContainer()->set(\App\Service\ProductPipeline::class, $mockPipeline);
+        static::getContainer()->set(ProductPipeline::class, $mockPipeline);
 
         $crawler = $client->request('GET', '/');
 
