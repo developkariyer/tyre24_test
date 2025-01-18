@@ -1,4 +1,6 @@
 # Product Information Display Module
+![Screenshot of Product Information Display](screenshot.png)
+
 ---
 ## Objective
 To develop a module for a web shop that fetches product data from various sources (e.g., CSV, XML, database) and normalizes it into a unified format. The normalized data should be displayed on a single result page.

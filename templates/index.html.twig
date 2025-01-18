@@ -4,20 +4,26 @@
 {% block title %}{{ title }}!{% endblock %}
 
 {% block body %}
-    <h1>Product List</h1>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Product List</h1>
 
-    {% if products is empty %}
-        <p>No products available.</p>
-    {% else %}
-        <ul>
-            {% for product in products %}
-                <li>
-                    <h2>{{ product.title }}</h2>
-                    <p>{{ product.description }}</p>
-                    <p>Price: ${{ product.price }}</p>
-                    <img src="{{ product.image_link }}" alt="{{ product.title }}">
-                </li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+        {% if products is empty %}
+            <div class="alert alert-warning text-center">No products available.</div>
+        {% else %}
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-6 g-4">
+                {% for product in products %}
+                    <div class="col">
+                        <div class="card h-100">
+                            <img src="{{ product.image_link }}" class="card-img-top" alt="{{ product.title }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ product.title }}</h5>
+                                <p class="card-text">{{ product.description }}</p>
+                                <p class="card-text"><strong>Price:</strong> ${{ product.price }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
 {% endblock %}
