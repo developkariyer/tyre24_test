@@ -14,7 +14,8 @@ class ProductConnectorCollector implements IteratorAggregate
         ProductConnectorSimulatedDb $productConnectorSimulatedDb,
         ProductConnectorJson $productConnectorJson,
         ProductConnectorXml $productConnectorXml,
-        ProductConnectorCsv $productConnectorCsv
+        ProductConnectorCsv $productConnectorCsv,
+        // all ProductConnector implementations should be added. Automated solutions might be preferred
     )
     {
         $this->connectors = [

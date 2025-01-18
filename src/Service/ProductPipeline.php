@@ -3,8 +3,6 @@
 namespace App\Service;
 
 use App\Connector\ProductConnectorCollector;
-use ReflectionClass;
-use ReflectionException;
 
 class ProductPipeline
 {
@@ -13,7 +11,7 @@ class ProductPipeline
      * Key is the name of the connector class and value is the template for normalizing data.
      */
     private array $templates = [
-        'ProductConnectorSimulatedDb' => [
+        'SimulatedDb' => [
             'id' => ['id'],
             'title' => ['name'],
             'description' => ['manufacturer', 'additional'],
@@ -34,17 +32,15 @@ class ProductPipeline
     /**
      * Process data from all connectors and return normalized data
      * @return array Normalized data
-     * @throws ReflectionException
      */
     public function process(): array
     {
         $unifiedData = [];
         foreach ($this->connectors as $connector) {
             $rawData = $connector->fetchData();
-            $connectorName = (new ReflectionClass($connector))->getShortName();
-            $template = $this->templates[$connectorName] ?? [];
+            $template = $this->templates[$connector->getName()] ?? [];
             if (empty($template)) {
-                error_log('No template found for ' . $connectorName);
+                error_log('No template found for ' . $connector->getName());
                 continue;
             }
             $this->normalizer->setTemplate($template);

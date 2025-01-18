@@ -11,4 +11,9 @@ class ProductConnectorXml implements ProductConnector
     {
         return [];
     }
+
+    public function getName(): string
+    {
+        return 'XML';
+    }
 }

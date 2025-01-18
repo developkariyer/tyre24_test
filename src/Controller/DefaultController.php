@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Service\ProductPipeline;
-use ReflectionException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,9 +15,6 @@ class DefaultController extends AbstractController
         $this->pipeline = $pipeline;
     }
 
-    /**
-     * @throws ReflectionException
-     */
     #[Route('/', name: 'main_page')]
     public function mainPage(): Response
     {

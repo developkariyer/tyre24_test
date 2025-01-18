@@ -31,20 +31,15 @@ class ProductConnectorSimulatedDb implements ProductConnector
         $result = [];
         foreach ($data as $row) {
             if (count($row) !== count($header)) {
-                /*trigger_error(
-                    sprintf(
-                        'Row has a different number of columns (%d) than the header (%d) in file %s. Row: %s',
-                        count($row),
-                        count($header),
-                        $this->dbFilePath,
-                        json_encode($row)
-                    ),
-                    E_USER_WARNING
-                );*/
                 continue;
             }
             $result[] = array_combine($header, $row);
         }
         return $result;
+    }
+
+    public function getName(): string
+    {
+        return 'SimulatedDb';
     }
 }

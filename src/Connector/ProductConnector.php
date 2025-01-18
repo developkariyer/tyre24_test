@@ -9,4 +9,5 @@ interface ProductConnector
      * @return array Raw data
      */
     public function fetchData(): array;
+    public function getName(): string;
 }

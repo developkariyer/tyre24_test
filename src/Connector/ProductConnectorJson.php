@@ -11,4 +11,9 @@ class ProductConnectorJson implements ProductConnector
     {
         return [];
     }
+
+    public function getName(): string
+    {
+        return 'JSON';
+    }
 }

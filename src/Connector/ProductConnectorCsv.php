@@ -11,4 +11,9 @@ class ProductConnectorCsv implements ProductConnector
     {
         return [];
     }
+
+    public function getName(): string
+    {
+        return 'CSV';
+    }
 }
