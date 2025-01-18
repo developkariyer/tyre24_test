@@ -82,11 +82,7 @@ Documented the process in detail using Joplin and exported to PDF.
 ### 5 hours
 Includes requirement analysis, system setup, implementation, testing, and documentation.
 
-##
-##
-##
-##
-##
+![Class Diagram](ProductPipeline.png)
 
 ## Class Diagram
 - `ProductConnector` and `Normalizer` are Interface classes.
