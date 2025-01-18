@@ -1,5 +1,4 @@
-## Umut Demirhan
-### umutdemirhan@kariyerfora.com | +49 178 81300376
+# Product Information Display Module
 ---
 ## Objective
 To develop a module for a web shop that fetches product data from various sources (e.g., CSV, XML, database) and normalizes it into a unified format. The normalized data should be displayed on a single result page.
@@ -88,7 +87,6 @@ Includes requirement analysis, system setup, implementation, testing, and docume
 ##
 
 ## Class Diagram
-![Freehand Drawing.svg](:/5e77f67deabb42abae3e8ac651a74de1)
 - `ProductConnector` and `Normalizer` are Interface classes.
 - `ProductConnectorCollector` statically manages connectors and could be enhanced with yaml or tag-based autowiring for flexibility.
 - `ProductNormalizer` is designed to support advanced features like AI-based information extraction.
